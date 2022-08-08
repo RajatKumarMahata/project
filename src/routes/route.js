@@ -35,4 +35,25 @@ router.get('/student-details/:name', function(req, res){
     res.send('Dummy response')
 })
 
+
+router.get('/movies', function (req, res) {
+  let movies=["Rang de basanti", "The shining", "Lord of the rings", "Batman begins"]
+
+  //res.send(movies)
+  
+})
+
+router.get( '/movies/:indexNumber', function(req,res){
+  let movies1=["Rang de basanti", "The shining", "Lord of the rings", "Batman begins"]
+  let rqpr= req.params.indexNumber
+  for (let i=0; i<movies1.length; i++){
+
+    if ( movies1[i]=== req.params.indexNumber){
+      return res.send(movies1[i])
+    }else {
+      return res.send("not found")
+    }
+  } 
+
+})
 module.exports = router;
