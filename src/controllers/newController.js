@@ -14,7 +14,8 @@ const bookList= async function (req, res) {
 }
  
 const getBooksInYear=async function(req,res){
-    let booksInYear=await BookModel.find({year:2021}).count()
+
+    let booksInYear=await BookModel.find({year:2021})
     res.send({msg:booksInYear})
 }
 const getParticularBooks=async function(req,res){
@@ -23,13 +24,12 @@ _id:0,year:1})
 res.send({msg: particularBook})
 }
 
-// const getXINRBooks= async function(req,res){
-//     let inr=await BookModel.find({$or:[rice.indianPrice},prices[{indianPrice:200}],prices[{indianPrice:500}]]},{bookName:1, authorName:1,
-//         _id:0,prices:1})
-//         res.send({msg:inr})
-// }
+const getXINRBooks= async function(req,res){
+    let inr=await BookModel.find({'prices.indianPrice':{$in:[100,200,500]}},{bookName:1,prices:1,_id:0})
+        res.send({msg:inr})
+}
 const getRandomBooks = async function(req,res){
-    let abc=await BookModel.find({$and:[{stockAvailable:true},{totalPages:500}]},{bookName:1,_id:0,
+    let abc=await BookModel.find({$or:[{stockAvailable:true},{totalPages:{$gt:500}}]},{bookName:1,_id:0,
         totalPages:1,stockAvailable:1})
         res.send({msg:abc})
 }
@@ -38,5 +38,5 @@ module.exports.createBook1=createBook1
 module.exports.bookList=bookList
 module.exports.getBooksInYear=getBooksInYear
 module.exports.getParticularBooks=getParticularBooks
-// module.exports.getXINRBooks=getXINRBooks
+module.exports.getXINRBooks=getXINRBooks
 module.exports.getRandomBooks=getRandomBooks
