@@ -8,7 +8,7 @@ const authorData= async (req,res)=>{
 }
 
 /////////////////////////////////////////////////////////////////////
-const sendBooksData=async (req,res)=>{
+const sendBookData=async (req,res)=>{
     let allBooksData= await newBookModels.create(req.body)
     res.send({"All Books":allBooksData})
 }
@@ -40,7 +40,7 @@ const bookprice=async (req,res)=>{
 }  
 
 module.exports.authorData=authorData
-module.exports.sendBooksData=sendBooksData
+module.exports.sendBooksData=sendBookData
 module.exports.bookBychetanBhagat=bookBychetanBhagat
 module.exports.updateBooks=updateBooks
 module.exports.bookprice=bookprice
