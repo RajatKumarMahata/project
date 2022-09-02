@@ -2,7 +2,7 @@ const req = require("express/lib/request")
 const userModel = require("../models/userModel")
 const UserModel= require("../models/userModel")
 
-const createUser = async function(req, res) {
+const createUsers = async function(req, res) {
     let userDetails = req.body
     userDetails.isFreeAppUser = req.appTypeFree
     
@@ -10,4 +10,4 @@ const createUser = async function(req, res) {
     res.send({status: true, data: userCreated})
 }
 
-module.exports.createUser = createUser
+module.exports.createUsers = createUsers 
