@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 //const CowinController= require("../controllers/cowinController")
 const memeController= require("../controllers/memeController")
-
+const weatherController= require("../controllers/weatherController")
 
 
 router.get("/test-me", function (req, res) {
