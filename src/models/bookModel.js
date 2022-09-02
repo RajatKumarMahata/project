@@ -21,11 +21,4 @@ module.exports = mongoose.model('Book', bookSchema) //users
 //unique
 // default
 
-//String
-//Number
-//Date
-//Boolean
-// Arrays
-// Object
-// ObjectId
-// Buffer - not cover
+
