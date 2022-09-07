@@ -82,7 +82,7 @@ let getBlogs = async function (req, res) {
 
 const updateBlog = async function (req, res) {
     try {
-        const blogData = req.params  
+        const blogData = req.body  
         let BLOG = req.params.blogId
         if (!mongoose.isValidObjectId(BLOG)){ return res.status(404).send({ status: false, data: "ID not Found in path param" })}
         let blog = await BlogModel.findOneAndUpdate(
@@ -125,10 +125,10 @@ const deletebyquery=async function(req,res)
         const query=req.query
     if(Object.keys(query).length==0)
     return res.status(400).send({status:false,msg:"query params should not be empty"})
-    const data=await blogModel.find({query}).filter({isDeleted:false})
+    const data=await BlogModel.find({query}).filter({isDeleted:false})
     if(data.length==0)
     return res.status(400).send({status:false,msg:"no such blog matches"})
-    const saveData=await blogModel.find({query},{$set:{isDeleted:true}},{new:true})
+    const saveData=await BlogModel.find({query},{$set:{isDeleted:true}},{new:true})
     return res.status(200).send({status:true,msg:saveData})
 }
 catch(error)
